@@ -7,6 +7,7 @@ const Main = styled.main`
     color: black;
     flex: 1;
     padding: 0;
+    margin: 0;
 `;
 
 function PageDefault({ children }) {

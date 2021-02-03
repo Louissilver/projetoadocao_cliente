@@ -8,7 +8,6 @@ export default function Home() {
     <Head/>
       <PageDefault>
       <Carousel>
-        <Carousel.Image src="../public/images/carrossel.jpg"/>
       </Carousel>
       </PageDefault>
     </>
