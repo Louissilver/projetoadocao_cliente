@@ -5,25 +5,26 @@ import Button from '../Button';
 
 const HeaderBase = styled.header`
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     padding: 1%;
-    flex-wrap: wrap;
     background-color: ${({ theme }) => theme.colors.secondary};
     @media(max-width: 800px) {
         flex-direction: column;
         justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
+        align-items: center;
+        flex-wrap: wrap;
     }
 `;
 
 const ButtonContent = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: end;
     align-items: center;
-    flex-wrap: wrap;
+    width: 50%;
     @media(max-width: 800px) {
+        flex-wrap: wrap;
         flex-direction: column;
+        width: 100%;
     }
 `;
 
@@ -37,7 +38,7 @@ function Header() {
             <ButtonContent>
                 <Button onClick={() => router.push('/')}>Home</Button>
                 <Button onClick={() => router.push('/listagem')}>Quero adotar</Button>
-                <Button onClick={() => router.push('/cadastro')}>Quero me cadastrar</Button>
+                <Button onClick={() => router.push('/cadastro')}>Me cadastrar</Button>
             </ButtonContent>
         </HeaderBase>
     )

@@ -15,6 +15,7 @@ Input.Container = styled.div`
    flex-wrap: wrap;
    align-items: center;
    padding: 3%;
+   margin-bottom: 30px;
    @media(max-width: 800px) {
         flex-direction: column;
     }
@@ -25,6 +26,7 @@ Input.Row = styled.div`
     justify-content: space-around;
     align-items: center;
     width: 100%;
+    margin-bottom:10px;
     @media(max-width: 800px) {
         flex-direction: column;
     }
@@ -41,28 +43,35 @@ Input.Control = styled.div`
 
 const Label = styled.label`
     text-align: start;
-    padding: 16px;
+    padding-bottom: 16px;
     margin: 0;
+    @media(max-width: 800px) {
+        text-align: center;
+    }
 `;
 
 function FormularioCadastro() {
     return (
-        <form>
+        <form
+            onSubmit={(event) => {
+                event.preventDefault();
+            }}
+        >
             <Input.Container>
                 <Input.Row>
                     <Input.Control>
                         <Label aria-label="nome">Nome:</Label>
-                        <Input id="nome" type="text" placeholder="Insira aqui seu nome completo. (Ex: Luís Fernando da Silveira)" />
+                        <Input id="nome" type="text" required placeholder="Insira aqui seu nome completo. (Ex: Luís Fernando da Silveira)" />
                     </Input.Control>
                     <Input.Control>
                         <Label aria-label="senha">Senha:</Label>
-                        <Input id="senha" type="password" placeholder="Insira aqui sua senha com, no mínimo, 8 dígitos." />
+                        <Input id="senha" type="password" required placeholder="Insira aqui sua senha com, no mínimo, 8 dígitos." />
                     </Input.Control>
                 </Input.Row>
                 <Input.Row>
                     <Input.Control>
                         <Label aria-label="email">E-mail:</Label>
-                        <Input id="email" type="email" placeholder="Insira aqui seu e-mail. (Ex: luis@gmail.com)" />
+                        <Input id="email" type="email" required placeholder="Insira aqui seu e-mail. (Ex: luis@gmail.com)" />
                     </Input.Control>
                 </Input.Row>
                 <Button type="submit">Cadastrar</Button>

@@ -2,8 +2,11 @@ import styled from 'styled-components';
 
 const Card = styled.article`
     width: 300px;
-    border: 2px solid black;
-    border-radius: 10px;;
+    border: 1px solid black;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     margin: 2%;
     padding: 0;
 `;
