@@ -4,7 +4,7 @@ import Card from '../src/components/Card';
 import Button from '../src/components/Button';
 import ListarCaes from '../src/repositories/Listagem';
 import styled from 'styled-components';
-import Head from 'next/head';
+import Head from '../src/components/Head';
 
 const Row = styled.div`
     display: flex;
@@ -41,7 +41,7 @@ export default function Listagem() {
 
     return (
         <>
-        <Head/>
+            <Head title="adoCão - Cães para adoção" />
             <PageDefault>
                 {dadosIniciais.length === 0 && <Loading>Carregando...</Loading>}
                 <Row>
@@ -62,8 +62,8 @@ export default function Listagem() {
                                             </Card.List>
                                         </Card.Content>
                                         <Card.Footer>
-                                        <Button>Saiba mais</Button>
-                                        <Button>Adotar</Button>
+                                            <Button>Saiba mais</Button>
+                                            <Button>Adotar</Button>
                                         </Card.Footer>
                                     </Card>
                                 );

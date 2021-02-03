@@ -5,10 +5,10 @@ import Carousel from '../src/components/Carousel';
 export default function Home() {
   return (
     <>
-    <Head/>
+      <Head title="adoCão" />
       <PageDefault>
-      <Carousel>
-      </Carousel>
+        <Carousel>
+        </Carousel>
       </PageDefault>
     </>
   )
