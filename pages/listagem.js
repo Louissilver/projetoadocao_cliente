@@ -4,6 +4,7 @@ import Card from '../src/components/Card';
 import Button from '../src/components/Button';
 import ListarCaes from '../src/repositories/Listagem';
 import styled from 'styled-components';
+import Head from 'next/head';
 
 const Row = styled.div`
     display: flex;
@@ -14,6 +15,7 @@ const Row = styled.div`
     width: 90%;
     @media(max-width: 800px) {
         flex-direction: column;
+    margin-left: 5%;
     }
 `;
 
@@ -39,6 +41,7 @@ export default function Listagem() {
 
     return (
         <>
+        <Head/>
             <PageDefault>
                 {dadosIniciais.length === 0 && <Loading>Carregando...</Loading>}
                 <Row>
