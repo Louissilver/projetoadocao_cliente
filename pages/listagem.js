@@ -9,7 +9,12 @@ const Row = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: stretch;
-    width: 100%;
+    align-items: center;
+    margin-left: 10%;
+    width: 90%;
+    @media(max-width: 800px) {
+        flex-direction: column;
+    }
 `;
 
 const Loading = styled.div`

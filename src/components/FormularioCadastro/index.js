@@ -15,6 +15,9 @@ Input.Container = styled.div`
    flex-wrap: wrap;
    align-items: center;
    padding: 3%;
+   @media(max-width: 800px) {
+        flex-direction: column;
+    }
 `;
 
 Input.Row = styled.div`
@@ -22,6 +25,9 @@ Input.Row = styled.div`
     justify-content: space-around;
     align-items: center;
     width: 100%;
+    @media(max-width: 800px) {
+        flex-direction: column;
+    }
 `;
 
 Input.Control = styled.div`

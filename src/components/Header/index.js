@@ -9,6 +9,12 @@ const HeaderBase = styled.header`
     padding: 1%;
     flex-wrap: wrap;
     background-color: ${({ theme }) => theme.colors.secondary};
+    @media(max-width: 800px) {
+        flex-direction: column;
+        justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    }
 `;
 
 const ButtonContent = styled.div`
@@ -16,6 +22,9 @@ const ButtonContent = styled.div`
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    @media(max-width: 800px) {
+        flex-direction: column;
+    }
 `;
 
 function Header() {
