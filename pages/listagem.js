@@ -3,7 +3,6 @@ import PageDefault from '../src/components/PageDefault';
 import Card from '../src/components/Card';
 import Button from '../src/components/Button';
 import ListarCaes from '../src/repositories/Listagem';
-import styled from 'styled-components';
 import Head from '../src/components/Head';
 import Loading from '../src/components/Loading';
 
