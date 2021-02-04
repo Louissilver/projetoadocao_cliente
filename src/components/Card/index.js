@@ -69,4 +69,17 @@ Card.Footer = styled.footer`
     border-top: 1px solid black;
 `;
 
+Card.Row = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    align-items: center;
+    margin-left: 10%;
+    width: 90%;
+    @media(max-width: 800px) {
+        flex-direction: column;
+    margin-left: 5%;
+    }
+`;
+
 export default Card;

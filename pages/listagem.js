@@ -5,25 +5,7 @@ import Button from '../src/components/Button';
 import ListarCaes from '../src/repositories/Listagem';
 import styled from 'styled-components';
 import Head from '../src/components/Head';
-
-const Row = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: stretch;
-    align-items: center;
-    margin-left: 10%;
-    width: 90%;
-    @media(max-width: 800px) {
-        flex-direction: column;
-    margin-left: 5%;
-    }
-`;
-
-const Loading = styled.div`
-    text-align: center; 
-    padding: 35vh;
-    font-size: 2rem;
-`;
+import Loading from '../src/components/Loading';
 
 export default function Listagem() {
     const [dadosIniciais, setDadosIniciais] = useState([]);
@@ -43,8 +25,11 @@ export default function Listagem() {
         <>
             <Head title="adoCão - Cães para adoção" />
             <PageDefault>
-                {dadosIniciais.length === 0 && <Loading>Carregando...</Loading>}
-                <Row>
+                {dadosIniciais.length === 0 &&
+                    <Loading.Container>
+                        <Loading />
+                    </Loading.Container>}
+                <Card.Row>
                     {dadosIniciais.map((cao, indice) => {
                         for (let i = 0; i < dadosIniciais.length; i += 1) {
                             if (!(typeof dadosIniciais[indice] === 'undefined') && (cao.adotado === false)) {
@@ -70,7 +55,7 @@ export default function Listagem() {
                             }
                         }
                     })}
-                </Row>
+                </Card.Row>
             </PageDefault>
         </>
     )
