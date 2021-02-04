@@ -15,7 +15,10 @@ export default function Home({ title }) {
             <meta property="og:site_name" content="adoCao" />
 
             <meta property="og:description" content="Site de adoção de cachorros." />
-            <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6TTyQO9pH5fV4r3h9W9RgnAt0KuhtYtdWkg&usqp=CAU" />
+            <meta property="og:image" content={carousel} />
+            <meta property="og:image:type" content="image/png" />
+            <meta property="og:image:width" content="1920" />
+            <meta property="og:image:height" content="1080" />
             <meta property="og:type" content="website" />
 
             <link rel="icon" type="image/jpg" href={icon} />
