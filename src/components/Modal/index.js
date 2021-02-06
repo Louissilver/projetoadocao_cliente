@@ -4,9 +4,11 @@ import Button from '../Button';
 
 const ModalBase = styled.div`
 width: 100%;
-height: 100vh;
-position: absolute;
+height: 100%;
+position: fixed;
 top: 0;
+right: 0;
+bottom: 0;
 left: 0;
 z-index: 10;
 background-color: rgb(0,0,0, 0.6);
@@ -25,11 +27,9 @@ ModalBase.Container = styled.div`
 ModalBase.Close = styled.button`
     background-color: transparent;
     border: none;
-    outline: none;
     width: 32px;
     height: 32px;
-    right: calc(-100% + 64px);
-    top: 16px;
+    right: calc(-100% + 30px);
     cursor: pointer;
     display: flex;
     position: relative;
@@ -39,7 +39,7 @@ ModalBase.Close = styled.button`
         content: ' ';
         position: absolute;
         width: 2.5px;
-        height: 24px;
+        height: 16px;
         background-color: black;
     }
     &:before{
@@ -56,18 +56,35 @@ ModalBase.Content = styled.div`
     align-items: center;
 `;
 
-export default function Modal({ id="modal", onClose = () => {}, children }) {
+ModalBase.Header = styled.header`
+    display: flex;
+    justify-content: pace-around;
+    padding: 1%;
+    background-color: ${({ theme }) => theme.colors.secondary};
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    @media(max-width: 800px) {
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+`;
+
+export default function Modal({ id = "modal", onClose = () => { }, children }) {
     const handleOutsideClick = (event) => {
-        if(event.target.id === id){
+        if (event.target.id === id) {
             onClose();
         }
     }
 
-    
+
     return (
         <ModalBase id={id} onClick={handleOutsideClick}>
             <ModalBase.Container>
-                <ModalBase.Close onClick={onClose}/>
+                <ModalBase.Header>
+                    <ModalBase.Close onClick={onClose} />
+                </ModalBase.Header>
                 <ModalBase.Content>
                     {children}
                 </ModalBase.Content>
