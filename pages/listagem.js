@@ -10,6 +10,7 @@ import Modal from '../src/components/Modal';
 export default function Listagem() {
     const [dadosIniciais, setDadosIniciais] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
+    const [dadosCao, setDadosCao] = useState({});
 
     useEffect(() => {
         ListarCaes()
@@ -48,7 +49,11 @@ export default function Listagem() {
                                             </Card.List>
                                         </Card.Content>
                                         <Card.Footer>
-                                            <Button onClick={() => setModalVisible(true)}>Saiba mais</Button>
+                                            <Button onClick={() => {
+                                                setModalVisible(true)
+                                                setDadosCao(dadosIniciais[indice])
+                                            }
+                                            }>Saiba mais</Button>
                                             <Button>Adotar</Button>
                                         </Card.Footer>
                                     </Card>
@@ -57,9 +62,7 @@ export default function Listagem() {
                         }
                     })}
                     {modalVisible &&
-                        <Modal id="saibaMais" onClose={() => { setModalVisible(false); }}>
-                            <h1>Saiba mais!</h1>
-                        </Modal>}
+                        <Modal id="saibaMais" onClose={() => { setModalVisible(false); }} cao={dadosCao} />}
                 </Card.Row>
             </PageDefault>
         </>

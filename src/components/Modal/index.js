@@ -1,4 +1,3 @@
-import { Children } from 'react';
 import styled from 'styled-components';
 import Button from '../Button';
 
@@ -21,26 +20,33 @@ ModalBase.Container = styled.div`
     background-color: #ffffff;
     width: 60%;
     height: 60%;
-    border-radius: 20px;
+    border-radius: 5px;
+    display:flex;
+    flex-direction: column;
+    justify-content:space-between;
 `;
 
 ModalBase.Close = styled.button`
-    background-color: transparent;
+    background-color: ${({ theme }) => theme.colors.primaryDark};
+    outline: none;
+    display: flex;
+    justify-content: center;
     border: none;
-    width: 32px;
-    height: 32px;
+    border-radius: 5px;
+    width: 24px;
+    height: 24px;
+    position: relative;
     right: calc(-100% + 30px);
     cursor: pointer;
     display: flex;
-    position: relative;
     align-items: center;
     &:before, 
     &:after {
         content: ' ';
         position: absolute;
-        width: 2.5px;
+        width: 4px;
         height: 16px;
-        background-color: black;
+        background-color: ${({ theme }) => theme.colors.secondary};
     }
     &:before{
         transform: rotate(45deg);
@@ -51,27 +57,39 @@ ModalBase.Close = styled.button`
 `;
 
 ModalBase.Content = styled.div`
+    overflow:auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
 `;
 
 ModalBase.Header = styled.header`
     display: flex;
-    justify-content: pace-around;
-    padding: 1%;
+    padding: .25rem;;
     background-color: ${({ theme }) => theme.colors.secondary};
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    h2{
+        color: ${({ theme }) => theme.colors.primaryDark};
+    }
     @media(max-width: 800px) {
-        flex-direction: column;
-        justify-content: space-around;
         align-items: center;
         flex-wrap: wrap;
     }
 `;
 
-export default function Modal({ id = "modal", onClose = () => { }, children }) {
+ModalBase.Footer = styled.footer`
+    display: flex;
+    padding: 1%;
+    background-color: ${({ theme }) => theme.colors.secondary};
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    @media(max-width: 800px) {
+        align-items: center;
+        flex-wrap: wrap;
+    }
+`;
+
+export default function Modal({ cao, id = "modal", onClose = () => { } }) {
     const handleOutsideClick = (event) => {
         if (event.target.id === id) {
             onClose();
@@ -84,10 +102,15 @@ export default function Modal({ id = "modal", onClose = () => { }, children }) {
             <ModalBase.Container>
                 <ModalBase.Header>
                     <ModalBase.Close onClick={onClose} />
+                    <h2>{cao.nome} | {cao.raca}</h2>
                 </ModalBase.Header>
                 <ModalBase.Content>
-                    {children}
+                    <img src={cao.imagem} />
                 </ModalBase.Content>
+                <ModalBase.Footer>
+                    <Button>Adotar</Button>
+                    <Button onClick={onClose}>Fechar</Button>
+                </ModalBase.Footer>
             </ModalBase.Container>
         </ModalBase>
     );
