@@ -7,6 +7,7 @@ const HeaderBase = styled.header`
     display: flex;
     justify-content: space-between;
     padding: 1%;
+    width: 100%;
     background-color: ${({ theme }) => theme.colors.secondary};
     @media(max-width: 800px) {
         flex-direction: column;

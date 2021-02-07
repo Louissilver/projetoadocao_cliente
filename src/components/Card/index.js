@@ -78,7 +78,10 @@ Card.Row = styled.div`
     width: 90%;
     @media(max-width: 800px) {
         flex-direction: column;
-    margin-left: 5%;
+        margin-left: 5%;
+    }
+    @media(max-width: 350px) {
+        margin-left: 0%;
     }
 `;
 

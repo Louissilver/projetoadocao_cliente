@@ -23,7 +23,11 @@ ModalBase.Container = styled.div`
     border-radius: 5px;
     display:flex;
     flex-direction: column;
-    justify-content:space-between;
+    justify-content: space-between;
+    @media(max-width: 800px) {
+        width: 80%;
+        height: 80%;
+    }
 `;
 
 ModalBase.Close = styled.button`
@@ -60,6 +64,7 @@ ModalBase.Content = styled.div`
     overflow:auto;
     display: flex;
     flex-direction: column;
+    justify-content: start;
 `;
 
 ModalBase.Header = styled.header`
