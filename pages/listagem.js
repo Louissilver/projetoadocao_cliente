@@ -43,6 +43,7 @@ export default function Listagem() {
                                         </Card.Header>
                                         <Card.Content>
                                             <Card.List>
+                                                <Card.Item>Raça: {cao.raca}</Card.Item>
                                                 <Card.Item>Idade: {cao.idade}</Card.Item>
                                                 <Card.Item>Porte: {cao.porte}</Card.Item>
                                                 <Card.Item>Sexo: {cao.sexo}</Card.Item>

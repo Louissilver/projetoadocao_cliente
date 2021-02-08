@@ -63,8 +63,11 @@ ModalBase.Close = styled.button`
 ModalBase.Content = styled.div`
     overflow:auto;
     display: flex;
-    flex-direction: column;
     justify-content: start;
+    height: 100%;
+    @media(max-width: 800px) {
+        flex-direction: column;
+    }
 `;
 
 ModalBase.Header = styled.header`
@@ -94,6 +97,24 @@ ModalBase.Footer = styled.footer`
     }
 `;
 
+ModalBase.Image = styled.img`
+    width: 50%;
+    object-fit: cover;
+    object-position: center;
+    @media(max-width: 800px) {
+        width: 100%;
+    }
+`;
+
+ModalBase.Description = styled.p`
+    font-size: 14px;
+    padding: 1%;
+    width: 50%;
+    @media(max-width: 800px) {
+        width: 100%;
+    }
+`;
+
 export default function Modal({ cao, id = "modal", onClose = () => { } }) {
     const handleOutsideClick = (event) => {
         if (event.target.id === id) {
@@ -107,10 +128,16 @@ export default function Modal({ cao, id = "modal", onClose = () => { } }) {
             <ModalBase.Container>
                 <ModalBase.Header>
                     <ModalBase.Close onClick={onClose} />
-                    <h2>{cao.nome} | {cao.raca}</h2>
+                    <h2>{cao.nome} - {cao.raca}</h2>
                 </ModalBase.Header>
                 <ModalBase.Content>
-                    <img src={cao.imagem} />
+                    <ModalBase.Image src={cao.imagem} />
+                    <ModalBase.Description>
+                        {
+                            //cao.descricao
+                        }
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </ModalBase.Description>
                 </ModalBase.Content>
                 <ModalBase.Footer>
                     <Button>Adotar</Button>
