@@ -115,7 +115,7 @@ ModalBase.Description = styled.p`
     }
 `;
 
-export default function Modal({ cao, id = "modal", onClose = () => { } }) {
+export default function Modal({ info, id = "modal", onClose = () => { } }) {
     const handleOutsideClick = (event) => {
         if (event.target.id === id) {
             onClose();
@@ -128,13 +128,13 @@ export default function Modal({ cao, id = "modal", onClose = () => { } }) {
             <ModalBase.Container>
                 <ModalBase.Header>
                     <ModalBase.Close onClick={onClose} />
-                    <h2>{cao.nome} - {cao.raca}</h2>
+                    <h2>{info[0].nome} - {info[1]}</h2>
                 </ModalBase.Header>
                 <ModalBase.Content>
-                    <ModalBase.Image src={cao.imagem} />
+                    <ModalBase.Image src={info[0].imagem} />
                     <ModalBase.Description>
                         {
-                            //cao.descricao
+                            //info[0].descricao
                         }
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </ModalBase.Description>

@@ -10,7 +10,7 @@ import Modal from '../src/components/Modal';
 export default function Listagem() {
     const [dadosIniciais, setDadosIniciais] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
-    const [dadosCao, setDadosCao] = useState({});
+    const [dadosCao, setDadosCao] = useState([]);
 
     useEffect(() => {
         ListarCaes()
@@ -23,6 +23,8 @@ export default function Listagem() {
             });
     }, []);
 
+    let verificador = 0;
+
     return (
         <>
             <Head title="adoCão - Cães para adoção" />
@@ -32,27 +34,27 @@ export default function Listagem() {
                         <Loading />
                     </Loading.Container>}
                 <Card.Row>
-                    {dadosIniciais.map((cao, indice) => {
+                    {dadosIniciais.map((raca, indice) => {
                         for (let i = 0; i < dadosIniciais.length; i += 1) {
-                            if (!(typeof dadosIniciais[indice] === 'undefined') && (cao.adotado === false)) {
+                            if (!(typeof dadosIniciais[indice].caes[0] === 'undefined') && (verificador === 0)) {
                                 return (
-                                    <Card key={indice}>
-                                        <Card.Image src={cao.imagem} />
+                                    <Card key={raca.id}>
+                                        <Card.Image src={dadosIniciais[indice].caes[i].imagem} />
                                         <Card.Header>
-                                            <Card.Title>Nome: {cao.nome}</Card.Title>
+                                            <Card.Title>Nome: {dadosIniciais[indice].caes[i].nome}</Card.Title>
                                         </Card.Header>
                                         <Card.Content>
                                             <Card.List>
-                                                <Card.Item>Raça: {cao.raca}</Card.Item>
-                                                <Card.Item>Idade: {cao.idade}</Card.Item>
-                                                <Card.Item>Porte: {cao.porte}</Card.Item>
-                                                <Card.Item>Sexo: {cao.sexo}</Card.Item>
+                                                <Card.Item>Raça: {dadosIniciais[indice].raca}</Card.Item>
+                                                <Card.Item>Idade: {dadosIniciais[indice].caes[i].idade}</Card.Item>
+                                                <Card.Item>Porte: {dadosIniciais[indice].caes[i].porte}</Card.Item>
+                                                <Card.Item>Sexo: {dadosIniciais[indice].caes[i].sexo}</Card.Item>
                                             </Card.List>
                                         </Card.Content>
                                         <Card.Footer>
                                             <Button onClick={() => {
                                                 setModalVisible(true)
-                                                setDadosCao(dadosIniciais[indice])
+                                                setDadosCao([dadosIniciais[indice].caes[i], dadosIniciais[indice].raca])
                                             }
                                             }>Saiba mais</Button>
                                             <Button>Adotar</Button>
@@ -63,7 +65,7 @@ export default function Listagem() {
                         }
                     })}
                     {modalVisible &&
-                        <Modal id="saibaMais" onClose={() => { setModalVisible(false); }} cao={dadosCao} />}
+                        <Modal id="saibaMais" onClose={() => { setModalVisible(false); }} info={dadosCao} />}
                 </Card.Row>
             </PageDefault>
         </>

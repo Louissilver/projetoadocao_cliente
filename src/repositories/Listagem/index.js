@@ -1,6 +1,6 @@
 import config from '../../config';
 
-const URL_CAES = `${config.URL_BACKEND_TOP}/caes`;
+const URL_CAES = `${config.URL_BACKEND_TOP}/racas?_embed=caes`;
 console.log(URL_CAES);
 
 const ListarCaes = () => {
